@@ -1,40 +1,22 @@
 pipeline {
     agent any
-
-    environment {
-        TOMCAT_WEBAPPS = "/var/lib/tomcat9/webapps"
-    }
-
     stages {
-
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git branch: 'main',
-                    git url: 'https://github.com/nagaveni12345/jenkins-pipeline.git', branch: 'master'
+                // Correct syntax: git inside steps block
+                git url: 'https://github.com/nagaveni12345/jenkins-pipeline.git', branch: 'master'
             }
         }
-
         stage('Build WAR') {
             steps {
-                sh 'mvn clean package'
+                echo 'Building WAR...'
+                // your build commands here
             }
         }
-
         stage('Deploy to Tomcat') {
             steps {
-                sh '''
-                echo "Removing old deployment..."
-                sudo rm -rf $TOMCAT_WEBAPPS/frontend-app*
-
-                echo "Copying WAR file..."
-                sudo cp target/frontend-app.war $TOMCAT_WEBAPPS/
-                '''
-            }
-        }
-
-        stage('Success') {
-            steps {
-                echo "Deployment Successful!"
+                echo 'Deploying to Tomcat...'
+                // your deploy commands here
             }
         }
     }
