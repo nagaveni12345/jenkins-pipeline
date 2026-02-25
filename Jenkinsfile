@@ -10,7 +10,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/YOUR-USERNAME/frontend-app.git'
+                    url: 'https://github.com/nagaveni12345/jenkins-pipeline.git'
             }
         }
 
