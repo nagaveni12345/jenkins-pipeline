@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Correct syntax: git inside steps block
+                // Correct syntax: git inside steps block 
                 git url: 'https://github.com/nagaveni12345/jenkins-pipeline.git', branch: 'master'
             }
         }
